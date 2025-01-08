@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Todo List" %></title>
+    <title><%= content_for(:title) || "Authy" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
+    <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    
+    <%= stylesheet_link_tag :all, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <%= link_to 'Home', root_path %>
+    <%= link_to 'Dashboard', dashboard_path %>
+    <% if authenticated? %>
+      <%#= Current.session %>
+      <%= Current.user.email_address %>
+      <%= button_to 'Sign out', session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', new_session_path %>
+      <%= link_to 'Sign up', new_registration_path %>
+    <% end %>
+    <hr>
+    <% if notice = flash[:notice] %>
+      <div style="color:green"><%= notice %></div>
+    <% end %>
+    <% if alert = flash[:alert] %>
+      <div style="color:red"><%= alert %></div>
+    <% end %>
+    <hr>
     <%= yield %>
   </body>
 </html>
