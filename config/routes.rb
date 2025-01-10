@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resource :registration, only: [:new, :create]
+  resources :tasks
+
   get "dashboard", to: "home#dashboard"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
