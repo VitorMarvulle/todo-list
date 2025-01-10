@@ -18,25 +18,20 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= link_to 'Home', root_path %>
-    <%= link_to "Dashboard", dashboard_path if Current.user %>
-    <% if authenticated? %>
-      <%#= Current.session %>
-      <%= Current.user.email_address %>
-      <%= button_to 'Sign out', session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', new_session_path %>
-      <%= link_to 'Sign up', new_registration_path %>
+<body>
+    <% if authenticated? && controller_name != "index" %>
+      <div class="navbar">
+        <%= button_to 'Sair', session_path, method: :delete, class: 'btn btn-danger logout-btn' %>
+      </div>
     <% end %>
-    <hr>
+
     <% if notice = flash[:notice] %>
       <div style="color:green"><%= notice %></div>
     <% end %>
     <% if alert = flash[:alert] %>
       <div style="color:red"><%= alert %></div>
     <% end %>
-    <hr>
+
     <%= yield %>
   </body>
 </html>
