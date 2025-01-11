@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="confirmation-window">
+  <% if notice %>
+    <p class="confirmation-notice"><%= notice %></p>
+  <% end %>
 
-<%= render @task %>
+  <div class="task-details">
+    <%= render @task %>
+  </div>
 
-<div>
-  <%= link_to "Edit this task", edit_task_path(@task) %> |
-  <%= link_to "Back to tasks", tasks_path %>
+  <div class="confirmation-message">
+    <p>Tem certeza que deseja excluir a tarefa?</p>
+  </div>
 
-  <%= button_to "Destroy this task", @task, method: :delete %>
+  <div class="confirmation-actions">
+    <%= button_to "Excluir", @task, method: :delete, class: "btn btn-danger" %>
+    <%= link_to "Voltar", dashboard_path, class: "btn btn-secondary" %>
+  </div>
 </div>

@@ -1,28 +1,50 @@
-<%= form_with(model: task) do |form| %>
+<%= form_with(model: task, local: true, class: "task-form") do |form| %>
   <% if task.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
+    <div class="form-errors">
+      <h2><%= pluralize(task.errors.count, "error") %> prevented this task from being saved:</h2>
       <ul>
-        <% task.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label :title, "Título da Tarefa", class: "form-label" %>
+    <%= form.text_field :title, class: "form-input", placeholder: "Digite o título da tarefa" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
+  <div class="form-group">
+    <%= form.label :description, "Descrição", class: "form-label" %>
+    <%= form.text_area :description, class: "form-input", rows: 4, placeholder: "Detalhes sobre a tarefa" %>
   </div>
 
-
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.label :status, "Status da Tarefa", class: "form-label" %>
+    <div class="radio-group">
+      <label>
+        <%= form.radio_button :status, "Pendente", class: "form-radio" %>
+        Pendente
+      </label>
+      <label>
+        <%= form.radio_button :status, "Fazendo", class: "form-radio" %>
+        Fazendo
+      </label>
+      <label>
+        <%= form.radio_button :status, "Feito", class: "form-radio" %>
+        Feito
+      </label>
+    </div>
   </div>
+
+  <div class="form-actions">
+    <%= form.submit task.new_record? ? "Criar Tarefa" : "Atualizar Tarefa", class: "btn btn-success" %>
+  </div>
+
+  <% if task.persisted? %>
+    <div class="form-delete">
+      <%= link_to "Excluir Tarefa", task_path(task), method: :delete, data: { confirm: "Tem certeza que deseja excluir esta tarefa?" }, class: "btn btn-danger" %>
+    </div>
+  <% end %>
 <% end %>
