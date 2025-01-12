@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   allow_unauthenticated_access(only: %i[new create])
   before_action :resume_session, only: [:new]
-  rate_limit to: 10, within: 1.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Tente novamente." }
+  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
   def new
     redirect_to root_url if authenticated?
@@ -10,15 +10,15 @@ class SessionsController < ApplicationController
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
       start_new_session_for user
-      redirect_to dashboard_path, notice: "Login realizado com sucesso."
+      redirect_to dashboard_path, notice: "Signed in."
     else
-      redirect_to new_session_url, alert: "Email ou senha incorretos. Tente novamente."
+      redirect_to new_session_url, alert: "Try another email address or password."
     end
   end
   
 
   def destroy
     terminate_session
-    redirect_to new_session_url, notice: "Sessão."
+    redirect_to new_session_url, notice: "Signed out."
   end
 end

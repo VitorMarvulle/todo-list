@@ -30,7 +30,7 @@ class TasksTest < ApplicationSystemTestCase
     fill_in "Description", with: @task.description
     fill_in "Title", with: @task.title
     fill_in "User", with: @task.user_id
-    click_on "Atualizar tarefa"
+    click_on "Update Task"
 
     assert_text "Task was successfully updated"
     click_on "Back"

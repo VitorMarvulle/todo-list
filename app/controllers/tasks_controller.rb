@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
@@ -13,7 +14,7 @@ class TasksController < ApplicationController
     @task = Current.user.tasks.new(task_params)
 
     if @task.save
-      redirect_to dashboard_path, notice: "Tarefa criada com sucesso!"
+      redirect_to tasks_path, notice: "Task was successfully created."
     else
       render :new
     end
@@ -23,7 +24,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to dashboard_path, notice: "Atualizada com sucesso."
+      redirect_to tasks_path, notice: "Task was successfully updated."
     else
       render :edit
     end
@@ -31,7 +32,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to dashboard_path, notice: "Tarefa excluída com sucesso."
+    redirect_to tasks_path, notice: "Task was successfully deleted."
   end
 
   private
@@ -41,6 +42,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :status)
+    params.require(:task).permit(:title, :description)
   end
 end

@@ -1,35 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
 
 
-* {
-  font-family: "Poppins", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* Home */
-
-.home-container {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-
-  .home-container > div {
+ /* PÁGINA HOME */
+body {
+    background-color: #f5f5f5;
     display: flex;
-    flex-direction: column; /* Colocar os itens na vertical */
+    justify-content: center;
     align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
   }
-
+  
+  .home-container {
+    text-align: center;
+  }
+  
   .welcome-message {
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 20px;
   }
   
-  .buttons {
+  .buttons-home {
     display: flex;
     gap: 15px;
     justify-content: center;
@@ -62,22 +64,34 @@
     background-color: #5a6268;
   }
 
-}
+/* application.html.erb */
+  .navbar {
+    position: relative;
+  }
+  
+  .logout-btn {
+    position: absolute;
+    top: 10px; /* Ajuste a distância do topo */
+    right: 10px; /* Ajuste a distância da borda direita */
+    padding: 8px 15px; /* Ajuste o tamanho do botão, se necessário */
+    font-size: 14px; /* Ajuste o tamanho da fonte do botão */
+  }
+  
 
-/* FORMS LOGIN/CADASTRO */
+  
+  /* FORMULÁRIOS SIGN IN E SIGN UP */
 
-/* Container principal do formulário */
 .form-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-
-    /* Título do formulário */
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título do formulário */
   .form-title {
     font-size: 24px;
     font-weight: bold;
@@ -85,12 +99,12 @@
     margin-bottom: 20px;
     color: #343a40;
   }
-
+  
   /* Grupos de inputs */
   .form-group {
     margin-bottom: 15px;
   }
-
+  
   /* Labels dos inputs */
   .form-label {
     display: block;
@@ -99,7 +113,7 @@
     margin-bottom: 5px;
     color: #495057;
   }
-
+  
   /* Campos de entrada */
   .form-input {
     width: 100%;
@@ -110,13 +124,13 @@
     box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
   }
-
+  
   .form-input:focus {
     border-color: #80bdff;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
     outline: none;
   }
-
+  
   /* Botões */
   .btn-form {
     display: inline-block;
@@ -133,330 +147,12 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-
+  
   .btn-form:hover {
     background-color: #0056b3;
   }
-
+  
   .btn-primary {
     background-color: #007bff;
   }
-
-}
-
-/* Botao Retornar para  a Home */
-
-.back-button {
-  position: absolute; /* Posiciona o botão de forma absoluta */
-  top: 10px; /* Margem superior */
-  left: 10px; /* Margem esquerda */
-  font-size: 1.2rem; /* Tamanho do texto */
-  text-decoration: none; /* Remove o sublinhado */
-  color: #007bff; /* Cor padrão */
-  background-color: transparent; /* Fundo transparente */
-  border: none; /* Remove bordas */
-  cursor: pointer; /* Altera o cursor para o formato de botão */
-  padding: 5px 10px; /* Adiciona espaço interno */
-  border-radius: 5px; /* Borda arredondada */
-  transition: color 0.3s ease;
-}
-
-.back-button:hover {
-  color: #0056b3; /* Cor ao passar o mouse */
-}
-
-
-
-
-
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-}
-
-.navbar h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.logout-btn {
-  background-color: #dc3545;
-  color: white;
-  padding: 8px 15px;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.logout-btn:hover {
-  background-color: #b02a37;
-}
-
-/* Dashboard */
-.dashboard-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.column {
-  flex: 1;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.column h2 {
-  text-align: center;
-  background-color: #007bff;
-  color: white;
-  padding: 10px 0;
-  margin: 0 -10px 15px;
-  border-radius: 8px 8px 0 0;
-}
-
-.task-card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.task-card h3 {
-  margin: 0;
-  font-size: 1.2em;
-  color: #333;
-}
-
-.task-card p {
-  margin: 5px 0;
-  color: #555;
-}
-
-.task-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.btn {
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  color: white;
-  font-size: 0.9rem;
-}
-
-.btn-warning {
-  background-color: #ffc107;
-}
-
-.btn-warning:hover {
-  background-color: #e0a800;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-}
-
-.btn-danger:hover {
-  background-color: #b02a37;
-}
-
-.btn-success {
-  background-color: #9ad200;
-}
-
-.btn-success:hover {
-  background-color: #6f9a18;
-}
-
-
-/* Formulário de Edição de Tarefas */
-.task-form {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.form-errors {
-  color: #dc3545;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 15px;
-}
-
-.form-errors h2 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-}
-
-.form-errors ul {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.form-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  box-shadow: none;
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.form-input:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-}
-
-.radio-group label {
-  display: inline-block;
-  margin-right: 15px;
-  font-weight: normal;
-}
-
-.form-radio {
-  margin-right: 5px;
-}
-
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.form-delete {
-  text-align: right;
-  margin-top: 10px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 8px 15px;
-  font-size: 14px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.btn-success {
-  background-color: #28a745;
-}
-
-.btn-success:hover {
-  background-color: #218838;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
-}
-
-
-/* Janela de Confirmação */
-.confirmation-window {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.confirmation-notice {
-  color: green;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.task-details {
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.confirmation-message {
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.confirmation-actions {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 8px 15px;
-  font-size: 14px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
-}
+  
