@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Authy" %></title>
+    <title><%= content_for(:title) || "ToDoList" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
-
+    
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <%= favicon_link_tag asset_path('check.ico') %>
     
     <%= stylesheet_link_tag :all, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-<body>
+  <body>
     <% if authenticated? && controller_name != "index" %>
       <nav class="navbar">
         <div class="navbar-content">
@@ -28,11 +26,13 @@
       </nav>
     <% end %>
 
+    <!-- Exibição das mensagens flash -->
     <% if notice = flash[:notice] %>
-      <div style="color:green"><%= notice %></div>
+      <div class="flash-message flash-notice"><%= notice %></div>
     <% end %>
+
     <% if alert = flash[:alert] %>
-      <div style="color:red"><%= alert %></div>
+      <div class="flash-message flash-alert"><%= alert %></div>
     <% end %>
 
     <%= yield %>

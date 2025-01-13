@@ -1,7 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@112.5,200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+* {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 body {
-  background-color: #f5f5f5;
   margin: 0;
-  font-family: Arial, sans-serif;
 }
 
 /* index */
@@ -14,7 +23,7 @@ body {
   align-items: center; /* Alinha horizontalmente */
   height: 100vh; /* Ocupa toda a altura da tela */
   text-align: center; /* Alinha o texto no centro */
-  background-color: #f8f9fa; /* Cor de fundo suave */
+  background-color: #ecead3;
 }
 
 .welcome-message {
@@ -96,7 +105,7 @@ body {
 /* Estilização do Dashboard */
 .dashboard-title {
   text-align: left; /* Alinha o título à esquerda */
-  margin-top: 60px; /* Ajuste para o título ficar abaixo da navbar fixa */
+  margin-top: 40px; /* Ajuste para o título ficar abaixo da navbar fixa */
   font-size: 2.5rem;
   margin-left: 20px; /* Adiciona um pequeno espaçamento à esquerda */
 }
@@ -361,9 +370,7 @@ body {
   display: inline-block;
   padding: 10px 20px;
   font-size: 1rem;
-  font-weight: bold;
   text-align: center;
-  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -371,9 +378,6 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #0056b3;
-}
 
 /* Estilização da área de erros */
 .form-errors {
@@ -500,4 +504,45 @@ body {
   .list-card {
     max-width: 100%; /* Ajusta os cards para ocupar toda a largura em telas pequenas */
   }
+}
+
+/* msgs notice */
+
+/* Estilos comuns para todas as mensagens de flash */
+.flash-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 1000;
+  transition: opacity 0.8s ease;
+  
+}
+
+/* Estilos específicos para o "notice" */
+.flash-notice {
+  background-color: #28a745; /* Cor verde */
+  opacity: 0.3;
+  color: white;
+}
+
+/* Estilos específicos para o "alert" */
+.flash-alert {
+  background-color: #dc3545; /* Cor vermelha */
+  color: white;
+}
+
+/* Quando a mensagem está visível */
+.flash-message.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Efeito de fade-out após alguns segundos */
+.flash-message.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
 }

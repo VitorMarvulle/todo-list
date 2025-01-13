@@ -22,6 +22,7 @@
 
     <div class="form-actions">
       <%= form.submit @list.new_record? ? 'Criar' : 'Atualizar', class: "btn btn-primary" %>
+      <%= link_to "Voltar", dashboard_path , class: "btn btn-primary"%>
     </div>
   <% end %>
 </div>

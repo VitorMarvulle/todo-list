@@ -15,6 +15,7 @@
 
     <div class="form-actions">
       <%= form.submit @task.new_record? ? 'Criar Tarefa' : 'Atualizar Tarefa', class: "btn btn-primary" %>
+      <%= link_to "Voltar", dashboard_path , class: "btn btn-primary"%>
     </div>
   <% end %>
 </div>
