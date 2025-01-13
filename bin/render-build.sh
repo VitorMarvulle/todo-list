@@ -10,6 +10,8 @@ set -x
 ruby_version=$(cat .ruby-version)
 echo "Using Ruby version: $ruby_version"
 
+chmod +x bin/*
+
 # Install dependencies
 bundle install --without development test
 
