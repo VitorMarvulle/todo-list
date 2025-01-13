@@ -21,4 +21,5 @@ bin/rails db:create db:migrate
 echo "Precompiling assets..."
 bin/rails assets:precompile
 
+
 echo "Build process complete."
