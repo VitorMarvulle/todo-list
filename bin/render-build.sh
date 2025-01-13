@@ -6,21 +6,16 @@ set -e
 # Echo commands to the terminal output
 set -x
 
-# Ensure the correct Ruby version is used
-ruby_version=$(cat .ruby-version)
-echo "Using Ruby version: $ruby_version"
-
+# Configurar permissões para scripts
 chmod +x bin/*
 
-# Install dependencies (ignores development and test groups)
+# Instalar dependências, ignorando grupos desnecessários
 bundle install --without development test
 
-# Start the Rails server (sem banco de dados e migrações)
-echo "Starting Rails server..."
-bin/rails server -b 0.0.0.0 -p 3000
-
-# Precompile assets (ignora a execução de testes)
+# Pré-compilar assets para produção
 echo "Precompiling assets..."
-bin/rails assets:precompile
+bin/rails assets:precompile || echo "Asset precompilation failed. Skipping."
 
-echo "Build process complete."
+# Iniciar o servidor Rails
+echo "Starting Rails server..."
+bin/rails server -b 0.0.0.0 -p $PORT
