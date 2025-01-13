@@ -20,9 +20,12 @@
 
 <body>
     <% if authenticated? && controller_name != "index" %>
-      <div class="navbar">
-        <%= button_to 'Sair', session_path, method: :delete, class: 'btn btn-danger logout-btn' %>
-      </div>
+      <nav class="navbar">
+        <div class="navbar-content">
+          <h2 class="navbar-title">Todo List</h2>
+          <%= button_to "Sair", session_path, method: :delete, class: "navbar-btn-logout" %>
+        </div>
+      </nav>
     <% end %>
 
     <% if notice = flash[:notice] %>

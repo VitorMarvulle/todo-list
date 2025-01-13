@@ -1,28 +1,20 @@
-<%= form_with(model: task) do |form| %>
-  <% if task.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<div class="form-container">
+  <h1 class="form-title" ><%= @task.new_record? ? 'Nova Tarefa' : 'Editar Tarefa' %></h1>
 
-      <ul>
-        <% task.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= form_with model: [@list, @task], local: true, class: "form" do |form| %>
+    <div class="form-group">
+      <%= form.label :title, "Título", class: "form-label" %>
+      <%= form.text_field :title, class: "form-input" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :description, "Descrição", class: "form-label" %>
+      <%= form.text_area :description, class: "form-input" %>
+      <%= hidden_field_tag :list_id, @list.id %>
+    </div>
+
+    <div class="form-actions">
+      <%= form.submit @task.new_record? ? 'Criar Tarefa' : 'Atualizar Tarefa', class: "btn btn-primary" %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
-  </div>
-
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

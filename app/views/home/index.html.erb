@@ -1,7 +1,12 @@
 <div class="home-container">
-  <h1 class="welcome-message">Bem vindo ao ToDo 360º!</h1>
+  <h1 class="welcome-message">Bem-vindo ao ToDo 360º!</h1>
   <div class="buttons-home">
-    <%= link_to 'Entrar', new_session_path, class: 'btn btn-primary' %>
-    <%= link_to 'Cadastre-se', new_registration_path, class: 'btn btn-secondary' %>
+    <% if authenticated? %>
+      <%= link_to 'Acessar Dashboard', dashboard_path, class: 'btn btn-primary' %>
+    <% else %>
+      <%= link_to 'Entrar', new_session_path, class: 'btn btn-primary' %>
+      <%= link_to 'Cadastre-se', new_registration_path, class: 'btn btn-secondary' %>
+    <% end %>
   </div>
 </div>
+

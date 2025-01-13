@@ -1,19 +1,26 @@
 Rails.application.routes.draw do
+  # Sessões e registros
   resource :session, only: [:new, :create, :destroy]
   resource :registration, only: [:new, :create]
-  resources :tasks
 
+  # Listas e Tarefas
+  resources :lists do
+    resources :tasks, only: [:new, :create, :edit, :update, :destroy]
+  end
+
+  resources :tasks, only: [:destroy]  # Tarefa independente para exclusão
+  
+
+  # Dashboard
   get "dashboard", to: "home#dashboard", as: :dashboard
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Health Check
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/*
+  # PWA
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  # Defines the root path route ("/")
+  # Rota raiz
   root "home#index"
 end

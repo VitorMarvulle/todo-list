@@ -1,0 +1,27 @@
+
+<div class="form-container">
+    <h1 class="form-title" ><%= @list.new_record? ? 'Nova Lista' : 'Editar Lista' %></h1>
+
+  <%= form_with(model: list, class: "form") do |form| %>
+    <% if list.errors.any? %>
+      <div class="form-errors">
+        <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+        <ul>
+          <% list.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title, "Título", class: "form-label" %>
+      <%= form.text_field :title, class: "form-input" %>
+    </div>
+
+    <div class="form-actions">
+      <%= form.submit @list.new_record? ? 'Criar' : 'Atualizar', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

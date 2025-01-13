@@ -10,8 +10,8 @@ class RegistrationsController < ApplicationController
   def create
     user = User.new(params.permit(:email_address, :password))
     if user.save
-      start_new_session_for user
-      redirect_to after_authentication_url, notice: "Signed up."
+      # start_new_session_for user
+      redirect_to root_path, notice: "Conta criada com sucesso!"
     else
       redirect_to new_session_url, alert: user.errors.full_messages.to_sentence
     end

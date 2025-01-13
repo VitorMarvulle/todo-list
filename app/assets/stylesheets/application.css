@@ -1,158 +1,503 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
-
-
- /* PÁGINA HOME */
 body {
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
+  background-color: #f5f5f5;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* index */
+
+/* Estilo para a home-container */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Alinha verticalmente */
+  align-items: center; /* Alinha horizontalmente */
+  height: 100vh; /* Ocupa toda a altura da tela */
+  text-align: center; /* Alinha o texto no centro */
+  background-color: #f8f9fa; /* Cor de fundo suave */
+}
+
+.welcome-message {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px; /* Espaço entre o título e os botões */
+}
+
+.buttons-home {
+  display: flex;
+  gap: 20px; /* Espaço entre os botões */
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  padding: 5px 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px;
+}
+
+.navbar-user-greeting {
+  margin-right: 20px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.navbar-title {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.navbar-btn-logout {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* Estilização do Dashboard */
+.dashboard-title {
+  text-align: left; /* Alinha o título à esquerda */
+  margin-top: 60px; /* Ajuste para o título ficar abaixo da navbar fixa */
+  font-size: 2.5rem;
+  margin-left: 20px; /* Adiciona um pequeno espaçamento à esquerda */
+}
+
+/* Container para agrupar título e botões */
+.container-dashboard {
+  margin-top: 80px; /* Garantir que o conteúdo não sobreponha a navbar */
+  padding: 0 20px;
+}
+
+/* Cabeçalho do dashboard com título e botões */
+.dashboard-header {
+  display: flex;
+  flex-direction: column; /* Coloca o título e os botões em coluna */
+  align-items: flex-start; /* Alinha o conteúdo à esquerda */
+}
+
+/* Botões abaixo do título */
+.action-buttons {
+  display: flex;
+  justify-content: flex-start; /* Alinha os botões à esquerda */
+  gap: 10px;
+  margin-top: 0px; /* Dá um pequeno espaço entre o título e os botões */
+}
+
+.btn {
+  padding: 12px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-create-list {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-create-list:hover {
+  background-color: #0056b3;
+}
+
+.btn-edit-list {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-edit-list:hover {
+  background-color: #218838;
+}
+
+
+/* listas */
+
+/* Estilização do container principal de listas */
+.lists-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Estilização para cada coluna de lista */
+.list-column {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px; /* Largura máxima de cada coluna de lista */
+  margin-bottom: 20px; /* Espaço entre as colunas */
+}
+
+/* Estilização do cabeçalho da lista */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Título da lista */
+.list-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Botão de adicionar tarefa */
+.btn-add-task {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.btn-add-task:hover {
+  background-color: #0056b3;
+}
+
+/* Estilização da lista de tarefas */
+.task-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Estilização de cada cartão de tarefa */
+.task-card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover nos cartões de tarefa */
+.task-card:hover {
+  background-color: #f1f1f1;
+}
+
+/* Título da tarefa */
+.task-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Descrição da tarefa */
+.task-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Estilização dos botões de ação da tarefa */
+.task-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.task-btn-edit,
+.task-btn-delete {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Botão de editar */
+.task-btn-edit {
+  background-color: #ffc107;
+  color: white;
+}
+
+.task-btn-edit:hover {
+  background-color: #e0a800;
+}
+
+/* Botão de excluir */
+.task-btn-delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.task-btn-delete:hover {
+  background-color: #c82333;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .lists-container {
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .home-container {
-    text-align: center;
-  }
-  
-  .welcome-message {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .buttons-home {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-  }
-  
-  .btn {
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-    border: none;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
-  .btn-secondary {
-    background-color: #6c757d;
-    color: white;
-    border: none;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #5a6268;
   }
 
-/* application.html.erb */
-  .navbar {
-    position: relative;
+  .list-column {
+    width: 100%;
+    max-width: 100%;
   }
-  
-  .logout-btn {
-    position: absolute;
-    top: 10px; /* Ajuste a distância do topo */
-    right: 10px; /* Ajuste a distância da borda direita */
-    padding: 8px 15px; /* Ajuste o tamanho do botão, se necessário */
-    font-size: 14px; /* Ajuste o tamanho da fonte do botão */
-  }
-  
 
-  
-  /* FORMULÁRIOS SIGN IN E SIGN UP */
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.form-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  .task-actions {
+    width: 100%;
+    justify-content: flex-start;
   }
-  
-  /* Título do formulário */
-  .form-title {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #343a40;
-  }
-  
-  /* Grupos de inputs */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  /* Labels dos inputs */
-  .form-label {
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
+
+  .task-btn-edit,
+  .task-btn-delete {
+    width: 100%;
     margin-bottom: 5px;
-    color: #495057;
   }
-  
-  /* Campos de entrada */
+}
+
+/* FORMULÁRIOS */
+
+/* Estilização global de formulário */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px; /* Limita a largura máxima do formulário */
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 150px;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilizando o grupo de elementos do formulário */
+.form-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  margin-top: 5px;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilização do botão */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Estilização da área de erros */
+.form-errors {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+/* Estilização das ações do formulário */
+.form-actions {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .form-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+  }
+
   .form-input {
-    width: 100%;
+    font-size: 0.9rem;
+  }
+}
+
+/* Adicionando ajustes para os formulários de tarefas e listas */
+.form-group {
+  max-width: 500px; /* Limita a largura dos campos de formulário */
+  margin: 10px auto;
+}
+
+
+/* show Lists */
+
+/* Container para os cards */
+.list-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cria colunas de cards com largura mínima de 300px */
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+
+/* Estilo do card de cada lista */
+.list-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px; /* Limita a largura máxima do card */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.list-card:hover {
+  transform: translateY(-5px); /* Efeito de hover no card */
+}
+
+/* Título do card */
+.list-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Estilo das informações dentro do card */
+.list-details {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Estilo das labels */
+.list-details strong {
+  color: #333;
+}
+
+/* Estilo das ações do card */
+.list-actions {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.list-actions .btn {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 5px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+.btn-edit {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #0056b3;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .list-card-container {
+    grid-template-columns: 1fr; /* Exibe 1 card por linha em telas pequenas */
     padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: border-color 0.3s, box-shadow 0.3s;
   }
-  
-  .form-input:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-    outline: none;
+
+  .list-card {
+    max-width: 100%; /* Ajusta os cards para ocupar toda a largura em telas pequenas */
   }
-  
-  /* Botões */
-  .btn-form {
-    display: inline-block;
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-form:hover {
-    background-color: #0056b3;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-  }
-  
+}

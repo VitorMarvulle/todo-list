@@ -6,6 +6,6 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @tasks = Current.user.tasks
+    @lists = Current.user.lists
   end
 end
