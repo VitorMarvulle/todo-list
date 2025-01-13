@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Give execute permissions to bin scripts
+        run: chmod +x bin/*  # Garante permissões de execução para todos os scripts em bin/
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -29,6 +32,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Give execute permissions to bin scripts
+        run: chmod +x bin/*  # Garante permissões de execução para todos os scripts em bin/
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -44,6 +50,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Give execute permissions to bin scripts
+        run: chmod +x bin/*  # Garante permissões de execução para todos os scripts em bin/
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -56,18 +65,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    # services:
-    #  redis:
-    #    image: redis
-    #    ports:
-    #      - 6379:6379
-    #    options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git pkg-config google-chrome-stable
 
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Give execute permissions to bin scripts
+        run: chmod +x bin/*  # Garante permissões de execução para todos os scripts em bin/
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -78,7 +84,6 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
