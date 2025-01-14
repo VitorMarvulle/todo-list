@@ -1,6 +1,6 @@
 databases:
-  - name: mysite
-    databaseName: mysite_mzc4
+  - name: dpg-cu379aggph6c73bohitg-a
+    databaseName: mysite_0q3c
     user: mysite
     plan: free
 
