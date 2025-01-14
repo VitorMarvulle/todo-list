@@ -2,7 +2,7 @@
 
 set -o errexit
 
-
+chmod +x bin/*
 bundle install
 bundle exec rails assets:precompile
 bundle exec rails assets:clean
