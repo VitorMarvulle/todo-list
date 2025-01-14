@@ -6,18 +6,18 @@ databases:
 
 services:
   - type: web
-    name: mysite
+    name: todo-list
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: "bundle exec rails server"
     envVars:
-      - key: DATABASE_URL
+      - key: postgresql://mysite:f6bDt628AGc7nCMIiUBux8rL8ghbzgw6@dpg-cu379aggph6c73bohitg-a/mysite_0q3c
         fromDatabase:
-          name: mysite
+          name: mysite_0q3c
           property: connectionString
-      - key: RAILS_MASTER_KEY
-        sync: false
+      - key: 9b809929f9fbbd14e581ff24ee6d526c
+        sync: true
       - key: WEB_CONCURRENCY
         value: 2 # sensible default
