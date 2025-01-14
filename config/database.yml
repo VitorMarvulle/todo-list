@@ -81,9 +81,10 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: todo_list_production
-    username: todo_list
-    password: <%= ENV["TODO_LIST_DATABASE_PASSWORD"] %>
+    url: <%= ENV['DATABASE_URL'] %>
+    database: mysite_0q3c
+    username: mysite
+    password: <%= ENV["PASSWORD"] %>
   cache:
     <<: *primary_production
     database: todo_list_production_cache
